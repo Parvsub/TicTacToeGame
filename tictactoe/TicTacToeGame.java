@@ -9,6 +9,7 @@ public class TicTacToeGame {
     String winner = null;
     int turn = 0;
     int firstPlayer = 0;
+    boolean nextGame = true;
     static Scanner sc = new Scanner(System.in);
     void initialiseGame(){
         gameBoard = new char[10];
@@ -125,8 +126,8 @@ public class TicTacToeGame {
     }
 
     void displayResults() {
-        if (winner == "tie")
-            System.out.println("\n\nIt's a tie!\nPlease try again.");
+        if (winner == "TIE")
+            System.out.println("\n\nIt's a TIE!\nPlease try again.");
         else
             System.out.println("\n\n"+winner+" wins!");
     }
@@ -353,6 +354,28 @@ public class TicTacToeGame {
                     playersTurn();
             }
             turn++;
+        }
+    }
+    void playGame() {
+        startGame();
+        continueTillGameOver();
+    }
+
+    void playAnotherGame() {
+        System.out.println("\n\n\nDo you want to play another game?");
+        System.out.println("Enter 'Yes' to continue.");
+        System.out.println("Enter 'No' to exit.");
+        char playerInput = sc.next().charAt(0);
+        if (playerInput == 'Y' || playerInput == 'y') {
+            nextGame = true;
+        }
+        else if (playerInput == 'N' || playerInput == 'n') {
+            nextGame = false;
+            System.out.println("\n\nThank you for playing!");
+        }
+        else {
+            System.out.println("\nInvalid Input.\nPlease try again!");
+            playAnotherGame();
         }
     }
     public static void main(String[] args) {
