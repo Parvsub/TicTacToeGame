@@ -1,5 +1,6 @@
 package com.tictactoe;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToeGame {
@@ -54,14 +55,27 @@ public class TicTacToeGame {
         }
     }
 
+    public static void checkToss() {
+        Random random = new Random();
+        int tossResult = random.nextInt(2) + 1;
+        System.out.println("Choose 1 for Heads or 2 for Tails");
+        int coinSelect = scannerObject.nextInt();
+
+        if (coinSelect == tossResult) {
+            System.out.println("Player Won The Toss! Player Starts");
+        } else {
+            System.out.println("Computer Won The Toss! Computer Starts");
+        }
+    }
+
     public static void main(String[] args) {
 
-        System.out.println("Welcome To TicTacToeGame");
+        System.out.println("Welcome To Tic Tac Toe");
+        checkToss();
         createBoard();
         getPlayerChoice();
         showBoard();
         userMove();
         isEmpty();
-
     }
 }
